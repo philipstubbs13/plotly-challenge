@@ -13,3 +13,8 @@
 .panel {
   border: 2px solid #040224 !important;
 }
+
+.jumbotron {
+  background-color: #040224;
+  color: #66c010;
+}
