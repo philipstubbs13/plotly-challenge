@@ -1,0 +1,15 @@
+.select-label {
+  font-weight: bold;
+}
+
+.demographics-label {
+  font-weight: bold;
+}
+
+.panel-heading {
+  background-color: #040224 !important;
+}
+
+.panel {
+  border: 2px solid #040224 !important;
+}
