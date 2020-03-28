@@ -14,7 +14,13 @@ Hulcr, J. et al.(2012) *A Jungle in There: Bacteria in Belly Buttons are Highly 
 
 ## Technologies Used
 
-The dashboard is built using D3, Plotly, JavaScript, HTML, and CSS.
+The dashboard is built using:
+
+* D3
+* Plotly
+* JavaScript
+* HTML
+* CSS.
 
 ## Visualizations
 
