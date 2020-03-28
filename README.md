@@ -20,7 +20,7 @@ The dashboard is built using:
 * Plotly
 * JavaScript
 * HTML
-* CSS.
+* CSS
 
 ## Visualizations
 
