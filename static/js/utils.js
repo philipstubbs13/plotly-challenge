@@ -7,8 +7,15 @@ const Comparator = (a, b) => {
 
 // Given an id, finds a specific sample from the given dataset.
 const findBellyButtonData = (data, id) => {
-  const selectedSample = data.samples.find(sample => sample.id == id);
-  const selectedSampleMetadata = data.metadata.find(sample => sample.id == id);
+  let selectedId = id;
+  if (!selectedId) {
+    const ids = data.samples.map(sample => sample.id);
+    const randomId = ids[Math.floor(Math.random() * ids.length)];
+    selectedId = randomId;
+  }
+
+  const selectedSample = data.samples.find(sample => sample.id == selectedId);
+  const selectedSampleMetadata = data.metadata.find(sample => sample.id == selectedId);
 
   return { selectedSample, selectedSampleMetadata };
 };
@@ -115,13 +122,14 @@ const buildBarPlot = (sampleArrayObject, id) => {
 
 const buildBubblePlot = selectedSample => {
   const bubblePlotTrace = {
+    autosize: true,
     x: selectedSample.otu_ids,
     y: selectedSample.sample_values,
     text: selectedSample.otu_labels,
     mode: 'markers',
     height: 500,
     marker: {
-      color: ['rgb(93, 164, 214)', 'rgb(255, 144, 14)', 'rgb(44, 160, 101)', 'rgb(255, 65, 54)'],
+      color: selectedSample.otu_ids,
       size: selectedSample.sample_values,
     },
   };
@@ -151,6 +159,7 @@ const buildBubblePlot = selectedSample => {
       },
       linecolor: colors.mainLightColor,
       linewidth: 2,
+      automargin: true,
     },
     titlefont: {
       size: 20,

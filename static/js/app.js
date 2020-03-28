@@ -1,21 +1,27 @@
 let testSubjectSelect = d3.select('#selDataset');
+testSubjectSelect
+  .append('option')
+  .attr('value', '')
+  .text('');
 testSubjectSelect.style('width', '20%');
 
-// Use the D3 library to load in samples.json.
-d3.json('../../samples.json').then(data => {
-  const names = data.names;
-  names.forEach(name =>
-    testSubjectSelect
-      .append('option')
-      .attr('value', name)
-      .text(name),
-  );
-});
+const buildDashboard = () => {
+  let id = '';
+  if (d3.event && d3.event.target && d3.event.target.value) {
+    id = d3.event.target.value;
+  }
 
-const buildDashboard = subjectId => {
-  const id = subjectId || d3.event.target.value;
-
+  // Use the D3 library to load in samples.json.
   d3.json('../../samples.json').then(data => {
+    // Populate the select dropdown with ids.
+    const names = data.names;
+    names.forEach(name =>
+      testSubjectSelect
+        .append('option')
+        .attr('value', name)
+        .text(name),
+    );
+
     const bellyButtonData = findBellyButtonData(data, id);
     const { selectedSample, selectedSampleMetadata } = bellyButtonData;
 
@@ -35,4 +41,4 @@ const buildDashboard = subjectId => {
 
 testSubjectSelect.on('change', buildDashboard);
 
-buildDashboard('940');
+buildDashboard();
