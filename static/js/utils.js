@@ -31,7 +31,7 @@ const populateDemographics = metadata => {
         <div class="card" style="width: 15rem;">
           <div class="card-body">
             <h5 class="card-title">${key}</h5>
-            <p class="card-text mt-3">${value}</p>
+            <p class="card-text mt-3 mb-3">${value != null ? value : 'Info Not Available'}</p>
           </div>
         </div>
       </div>
@@ -86,7 +86,7 @@ const buildBarPlot = (sampleArrayObject, id) => {
   const barPlotData = [barPlotTrace];
 
   const barPlotLayout = {
-    title: `Top ${sample_array_sliced_ids.length} OTUS for Test Subject ${id}`,
+    title: `Top ${sample_array_sliced_ids.length} OTUs for Test Subject ${id}`,
     font: {
       family: 'Raleway, sans-serif',
     },
@@ -175,10 +175,10 @@ const buildGaugePlot = selectedSampleMetadata => {
   const gaugePlotData = [
     {
       type: 'indicator',
-      mode: 'gauge+number+delta',
+      mode: 'gauge+number',
       hole: 0.3,
       value: selectedSampleMetadata.wfreq,
-      title: { text: 'Belly Button Washing Frequency', font: { size: 24 } },
+      title: { text: 'Belly Button Washing Frequency<br> Scrubs per Week', font: { size: 24 } },
       gauge: {
         axis: { range: [0, 9], tickwidth: 1, tickcolor: 'darkblue' },
         bgcolor: colors.white,
