@@ -1,8 +1,4 @@
 let testSubjectSelect = d3.select('#selDataset');
-testSubjectSelect
-  .append('option')
-  .attr('value', '')
-  .text('');
 testSubjectSelect.style('width', '20%');
 
 const buildDashboard = () => {

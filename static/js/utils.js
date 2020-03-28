@@ -11,6 +11,7 @@ const findBellyButtonData = (data, id) => {
   if (!selectedId) {
     const ids = data.samples.map(sample => sample.id);
     const randomId = ids[Math.floor(Math.random() * ids.length)];
+    testSubjectSelect.property('value', randomId);
     selectedId = randomId;
   }
 
