@@ -5,7 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Bellybutton Biodiversity</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    s
     <link rel="stylesheet" href="./static/css/styles.css" />
   </head>
 
@@ -15,25 +21,19 @@
         <div class="col-md-12 jumbotron text-center">
           <h1>Belly Button Biodiversity Dashboard</h1>
           <p>Use the interactive charts below to explore the dataset</p>
+          <h5 class="select-label heading mt-4">Test Subject ID Number</h5>
+          <select id="selDataset"></select>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-2">
-          <div class="well">
-            <h5 class="select-label">Test Subject ID Number</h5>
-            <select id="selDataset"></select>
-          </div>
-          <div class="panel panel-primary">
-            <div class="panel-heading">
-              <h3 class="panel-title">Demographic Info</h3>
-            </div>
-            <div id="sample-metadata" class="panel-body"></div>
-          </div>
-        </div>
-        <div class="col-md-5">
+      <div class="row justify-content-center">
+        <h5 class="heading">Demographic Info</h5>
+      </div>
+      <div class="row demographics-container justify-content-center"></div>
+      <div class="row mt-5">
+        <div class="col-md-6">
           <div id="bar"></div>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-6">
           <div id="gauge"></div>
         </div>
       </div>
@@ -46,6 +46,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="./static/js/colors.js"></script>
     <script src="./static/js/utils.js"></script>
     <script src="./static/js/app.js"></script>
   </body>

@@ -1,5 +1,5 @@
 let testSubjectSelect = d3.select('#selDataset');
-testSubjectSelect.style('width', '100%');
+testSubjectSelect.style('width', '20%');
 
 // Use the D3 library to load in samples.json.
 d3.json('../../samples.json').then(data => {

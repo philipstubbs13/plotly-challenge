@@ -6,15 +6,20 @@
   font-weight: bold;
 }
 
-.panel-heading {
-  background-color: #040224 !important;
-}
-
-.panel {
-  border: 2px solid #040224 !important;
-}
-
 .jumbotron {
-  background-color: #040224;
-  color: #66c010;
+  background-color: #282c35;
+  color: #ffa7c4;
+}
+
+body {
+  background-color: #282c35;
+}
+
+.heading {
+  color: #ffa7c4;
+}
+
+.card {
+  height: 115px;
+  font-weight: bold;
 }

@@ -15,11 +15,21 @@ const findBellyButtonData = (data, id) => {
 
 // Function used to populate the demographics panel with metadata.
 const populateDemographics = metadata => {
-  let demographicsPanelBody = d3.select('.panel-body');
-  demographicsPanelBody.html('');
+  let demographicsContainer = d3.select('.demographics-container');
+  demographicsContainer.html('');
   Object.entries(metadata).forEach(([key, value]) => {
-    demographicsPanelBody.append('p').html(`<span class="demographics-label">${key}:</span> ${value}`);
+    demographicsContainer.append('div').html(`
+      <div class="col-md-3 mt-3">
+        <div class="card" style="width: 15rem;">
+          <div class="card-body">
+            <h5 class="card-title">${key}</h5>
+            <p class="card-text mt-3">${value}</p>
+          </div>
+        </div>
+      </div>
+    `);
   });
+  demographicsContainer.selectAll('.card').style('border', `5px solid ${colors.mainLightColor}`);
 };
 
 const buildSampleArrays = selectedSample => {
@@ -59,7 +69,7 @@ const buildBarPlot = (sampleArrayObject, id) => {
     marker: {
       color: '#040224',
       line: {
-        color: '#66c010',
+        color: colors.lightGreen,
         width: 4.0,
       },
     },
@@ -74,26 +84,31 @@ const buildBarPlot = (sampleArrayObject, id) => {
     },
     yaxis: {
       zeroline: false,
-      gridwidth: 2,
-      xaxis: {
-        tickfont: {
-          size: 16,
-          color: 'rgb(107, 107, 107)',
-        },
-      },
-      titlefont: {
-        size: 16,
-        color: 'rgb(107, 107, 107)',
-      },
       tickfont: {
-        size: 14,
-        color: 'rgb(107, 107, 107)',
+        size: 16,
+        color: colors.mainLightColor,
       },
+      linecolor: colors.mainLightColor,
+      linewidth: 2,
+    },
+    xaxis: {
+      tickfont: {
+        size: 18,
+        color: colors.mainLightColor,
+      },
+      linecolor: colors.mainLightColor,
+      linewidth: 2,
+    },
+    titlefont: {
+      size: 20,
+      color: colors.mainLightColor,
     },
     bargap: 0.4,
     autosize: true,
     width: 500,
     height: 600,
+    plot_bgcolor: colors.mainDarkColor,
+    paper_bgcolor: colors.mainDarkColor,
   };
   Plotly.newPlot('bar', barPlotData, barPlotLayout);
 };
@@ -114,7 +129,33 @@ const buildBubblePlot = selectedSample => {
   const bubblePlotData = [bubblePlotTrace];
 
   const bubblePlotLayout = {
-    xaxis: { title: 'OTU ID' },
+    plot_bgcolor: colors.mainDarkColor,
+    paper_bgcolor: colors.mainDarkColor,
+    xaxis: {
+      title: 'OTU ID',
+      tickfont: {
+        size: 18,
+        color: colors.mainLightColor,
+      },
+      titlefont: {
+        size: 18,
+        color: colors.mainLightColor,
+      },
+      linecolor: colors.mainLightColor,
+      linewidth: 2,
+    },
+    yaxis: {
+      tickfont: {
+        size: 16,
+        color: colors.mainLightColor,
+      },
+      linecolor: colors.mainLightColor,
+      linewidth: 2,
+    },
+    titlefont: {
+      size: 20,
+      color: colors.mainLightColor,
+    },
   };
 
   Plotly.newPlot('bubble', bubblePlotData, bubblePlotLayout);
@@ -130,10 +171,10 @@ const buildGaugePlot = selectedSampleMetadata => {
       title: { text: 'Belly Button Washing Frequency', font: { size: 24 } },
       gauge: {
         axis: { range: [0, 9], tickwidth: 1, tickcolor: 'darkblue' },
-        bgcolor: 'white',
+        bgcolor: colors.white,
         borderwidth: 5,
-        bordercolor: '#040224',
-        bar: { color: '#04022450' },
+        bordercolor: colors.lightGreen,
+        bar: { color: colors.mainLightColor },
         steps: [
           { range: [0, 1], color: '#C8F08F' },
           { range: [1, 2], color: '#B4E051' },
@@ -153,7 +194,9 @@ const buildGaugePlot = selectedSampleMetadata => {
     width: 500,
     height: 400,
     margin: { t: 25, r: 25, l: 25, b: 25 },
-    font: { color: 'darkblue', family: 'Arial' },
+    font: { color: colors.mainLightColor, family: 'Arial' },
+    plot_bgcolor: colors.mainDarkColor,
+    paper_bgcolor: colors.mainDarkColor,
   };
 
   Plotly.newPlot('gauge', gaugePlotData, gaugePlotLayout);
